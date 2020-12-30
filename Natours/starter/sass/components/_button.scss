@@ -1,0 +1,54 @@
+.btn {
+	&:link,
+	&:visited {
+		text-transform: uppercase;
+		text-decoration: none;
+		padding: 1.5rem 4rem;
+		display: inline-block; /* treated as if it is text (anchor is inline by default) */
+		border-radius: 10rem;
+		transition: all 0.2s;
+		position: relative;
+	}
+
+	&:hover {
+		transform: translateY(-0.3rem);
+		box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+		&::after {
+			transform: scaleX(1.4) scaleY(1.6);
+			opacity: 0;
+		}
+	}
+
+	&:active {
+		transform: translateY(-0.1rem);
+		box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+	}
+
+	&--animated {
+		animation: moveInBottom 1s ease-out;
+		animation-fill-mode: backwards;
+	}
+
+	&--white {
+		background-color: $color-white;
+		color: $color-dark-gray;
+
+		&::after {
+			background-color: $color-white;
+		}
+	}
+
+	&::after {
+		content: '';
+		display: inline-block;
+		height: 100%; /* 100% of the btn element */
+		width: 100%;
+		border-radius: 10rem;
+		position: absolute;
+		top: 0; /* relative to the parent, so the btn must be position: relative */
+		left: 0;
+		z-index: -1;
+		transition: all 0.4s;
+	}
+}
